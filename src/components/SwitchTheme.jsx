@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '../utils/Index'
 
 const SwitchTheme = () => {
-  const [theme, setTheme] = useState(localStorage.theme)
+  const [theme, setTheme] = useState(localStorage.theme || 'dark')
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
@@ -15,12 +15,6 @@ const SwitchTheme = () => {
       document.documentElement.classList.remove('dark')
     }
   }
-
-  useEffect(() => {
-    if (!theme) {
-      setTheme('dark')
-    }
-  }, [])
 
   useEffect(() => {
     if (localStorage.theme === 'dark') {

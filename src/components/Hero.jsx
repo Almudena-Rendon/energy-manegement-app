@@ -7,8 +7,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className=' bg-white dark:bg-gray-900 pt-[69px] backgroundLogin w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container xl:px-20 px-3'
-    >
+      className='bg-gray-900 pt-[69px] backgroundLogin w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container xl:px-20 px-3'>
       <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-36">
         <p className="text-xl font-montserrat text-white">
           Welcome to Energy App
@@ -22,11 +21,10 @@ const Hero = () => {
             Management{" "}
           </span>{" "}
         </h1>
-        <p className="text-white font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
-          Discover the future of energy management with Energy App, the ultimate tool to help you monitor, control, and optimize your energy consumption.
-        </p>
+          <p className="text-white font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
+            Discover the future of energy management with Energy App, the ultimate tool to help you monitor, control, and optimize your energy consumption.
+          </p>
       </div>
-
       <div className="relative flex-1 flex justify-center items-center pb-10 xl:pb-0 ">
         <Login />
       </div>
