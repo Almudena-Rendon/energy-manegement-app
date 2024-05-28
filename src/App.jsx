@@ -6,13 +6,11 @@ import ToasterComponent from './components/Toaster'
 
 function App() {
 
-  const [token, setToken] = useState(localStorage.getItem("userToken") ?? null)
-
   return (
     <>
       <main className="relative">
         <Navbar />  
-        <Hero token={token} setToken={setToken} />
+        <Hero />
         <ToasterComponent />
       </main>   
     </>

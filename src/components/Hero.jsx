@@ -2,7 +2,7 @@ import Login from './Login'
 import "../index.css"
 
 
-const Hero = ({ token, setToken }) => {
+const Hero = () => {
 
   return (
     <section
@@ -28,7 +28,7 @@ const Hero = ({ token, setToken }) => {
       </div>
 
       <div className="relative flex-1 flex justify-center items-center pb-10 xl:pb-0 ">
-        <Login token={token} setToken={setToken} />
+        <Login />
       </div>
     </section>
   )
