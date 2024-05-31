@@ -1,8 +1,8 @@
-import Login from './Login'
+import Login from '../components/Login'
 import "../index.css"
 
 
-const Hero = () => {
+const Hero = ({ setIsLogged }) => {
 
   return (
     <section
@@ -12,7 +12,7 @@ const Hero = () => {
         <p className="text-xl font-montserrat text-white">
           Welcome to Energy App
         </p>
-        <h1 className="mt-10 font-palanquin text-[80px] leading-[100px] max-sm:text-[28px] max-sm:leading-[45px] font-bold">
+        <h1 className="mt-10 font-palanquin text-[80px] leading-[100px] max-sm:text-[45px] max-sm:leading-[45px] font-bold">
           <span className="text-white xl:whitespace-nowrap relative z-10 xl:pr-10 max-sm::p-0">
               New Energy 
           </span>
@@ -26,7 +26,7 @@ const Hero = () => {
           </p>
       </div>
       <div className="relative flex-1 flex justify-center items-center pb-10 xl:pb-0 ">
-        <Login />
+        <Login setIsLogged={setIsLogged} />
       </div>
     </section>
   )

@@ -1,0 +1,80 @@
+const categories = [
+  {
+    category: "balance",
+    widgets: ["balance-electrico"],
+  },
+  {
+    category: "demanda",
+    widgets: [
+      "evolucion",
+      "variacion-componentes",
+      "variacion-componentes-movil",
+    ],
+  },
+  {
+    category: "generacion",
+    widgets: [
+      "estructura-generacion",
+      "evolucion-renovable-no-renovable",
+      "estructura-renovables",
+      "estructura-generacion-emisiones-asociadas",
+      "evolucion-estructura-generacion-emisiones-asociadas",
+      "no-renovables-detalle-emisiones-CO2",
+      "maxima-renovable",
+      "potencia-instalada",
+      "maxima-renovable-historico",
+      "maxima-sin-emisiones-historico",
+    ],
+  },
+  {
+    category: "intercambios",
+    widgets: [
+      "francia-frontera",
+      "portugal-frontera",
+      "marruecos-frontera",
+      "andorra-frontera",
+      "lineas-francia",
+      "lineas-portugal",
+      "lineas-marruecos",
+      "francia-frontera-programado",
+      "portugal-frontera-programado",
+      "marruecos-frontera-programado",
+      "andorra-frontera-programado",
+      "enlace-baleares",
+      "frontera-fisicos",
+      "todas-fronteras-fisicos",
+      "frontera-programados",
+      "todas-fronteras-programados",
+    ],
+  },
+  {
+    category: "transporte",
+    widgets: [
+      "energia-no-suministrada-ens-frontera",
+      "tindice-indisponibilidad",
+      "tiempo-interrupcion-medio-tim",
+      "kilometros-lineas",
+      "indice-disponibilidad",
+      "numero-cortes",
+      "indice-disponibilidad-total",
+    ],
+  },
+  {
+    category: "mercados",
+    widgets: [
+      "componentes-precio",
+      "energia-gestionada-servicios-ajuste",
+      "energia-restricciones",
+      "reserva-potencia-adicional",
+      "banda-regulacion-secundaria",
+      "energia-precios-regulacion-secundaria",
+      "energia-precios-regulacion-terciaria",
+      "energia-precios-gestion-desvios",
+      "coste-servicios-ajuste",
+      "volumen-energia-servicios-ajuste-variacion",
+      "precios-mercados-tiempo-real",
+    ],
+  },
+];
+
+export default categories;
