@@ -6,8 +6,8 @@ import { Spinner } from "../utils/Index"
 const Login = ({ setIsLogged }) => {
 
   const navigate = useNavigate()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
   const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e) => {
@@ -71,7 +71,7 @@ const Login = ({ setIsLogged }) => {
               <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" required />
             </div>
             <div className="pt-3">
-              <button type="submit" className={`${loading ? "cursor-not-allowed" : "" } w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800`}>
+              <button disabled={loading} type="submit" className={`${loading ? "cursor-not-allowed" : "" } w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800`}>
                 {loading ? <Spinner /> : null}
                 {loading ? "Loading..." : "Login to your account"}
               </button>

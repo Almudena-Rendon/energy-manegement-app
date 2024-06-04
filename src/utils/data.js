@@ -1,4 +1,4 @@
-const categories = [
+const requestData = [
   {
     category: "balance",
     widgets: ["balance-electrico"],
@@ -77,4 +77,4 @@ const categories = [
   },
 ];
 
-export default categories;
+export default requestData;

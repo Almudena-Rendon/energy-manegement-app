@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^4.4.3",
+    "flowbite": "^2.3.0",
     "gsap": "^3.12.5",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "tailwind-datepicker-react": "^1.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

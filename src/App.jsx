@@ -4,6 +4,7 @@ import ToasterComponent from './components/Toaster'
 import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
 import Hero from './pages/Hero'
+import 'flowbite'
 
 function App() {
 

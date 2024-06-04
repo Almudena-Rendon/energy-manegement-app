@@ -1,10 +1,9 @@
-import React from 'react'
 
 const Footer = () => {
   return (
-    <section className="text-right font-semibold text-gray-500 pt-2">
-    <a href="#" className="text-blue-600 hover:underline">Recreated on Codepen</a> with <a href="https://tailwindcss.com/" className="text-teal-400 hover:underline">Tailwind CSS</a> by Sinan AYDOĞAN, <a href="https://dribbble.com/shots/10711741-Free-UI-Kit-for-Figma-Online-Courses-Dashboard" className="text-blue-600 hover:underline">original design</a> made by Chili Labs and <a href="https://codepen.io/azrikahar/pen/abZzaga"  className="text-blue-600 hover:underline" target="_blank">abZzaga</a>
-  </section>
+    <footer className="text-right font-semibold text-gray-500 pt-2">
+    Created with <span className="text-teal-400 hover:underline">React and Tailwind CSS</span> by <span className="text-blue-600">Almudena Rendón Fernández &copy;</span>
+  </footer>
   )
 }
 

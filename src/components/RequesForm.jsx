@@ -1,31 +1,172 @@
-import { useState } from "react";
+import { useState } from "react"
+import toast from "react-hot-toast"
+import Calendar from "./Calendar"
+import requestData from "../utils/data"
+import { Spinner } from "../utils/Index"
+import FilterEnergyBalance from "./FilterEnergyBalance"
 
-const RequesForm = () => {
+const URL_base = "https://apidatos.ree.es/en/datos"
 
-  const URL_base = "https://apidatos.ree.es/es/datos/"
+const RequestForm = ({ setFilteredData }) => {
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState()
+  const [widgets, setWidgets] = useState(requestData[0].widgets)
+  const [request, setRequest] = useState({
+    category: requestData[0].category,
+    widget: requestData[0].widgets,
+    startDate: "2024-02-01T00:00",
+    endDate: "2024-06-01T23:59",
+    timeTrunc: "day",
+  })
 
-  const [widgets, setWidgets] = useState()
+  const handleRequest = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const response = await fetch(
+        `${URL_base}/${request.category}/${request.widget}?start_date=${request.startDate}&end_date=${request.endDate}&time_trunc=${request.timeTrunc}`,
+        {
+          method: "GET",
+        }
+      )
+      if (response.ok) {
+        const data = await response.json()
+        setData(data)
+        toast.success(`Request successfully made!`)
+      } else {
+        const errorData = await response.json()
+        toast.error(`${errorData.errors[0].detail}`)
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+    } catch (error) {
+      console.error("There was a problem with the request:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
+  const handleChangeCategory = (e) => {
+    const arrayTemp = requestData.filter(
+      (elem) => elem.category === e.target.value
+    )[0].widgets
+    console.log(arrayTemp, "array")
+    setWidgets(arrayTemp)
+    setRequest({ ...request, category: e.target.value, widget: arrayTemp[0] })
+    setData()
+  }
+
+  const handleChangeWidget = (e) => {
+    setRequest({ ...request, widget: e.target.value })
+    setData()
+  }
+
+  const handleTimeTrunc = (e) => {
+    setRequest({ ...request, timeTrunc: e.target.value })
+    setData()
+  }
+
+  console.log(request)
+  console.log(data, "data")
 
   return (
     <form className="flex flex-col justify-center">
       <div className="flex flex-col">
-        <label htmlFor="name" className="hidden">Category</label>
-        <input type="name" name="name" id="name" placeholder="Full Name" className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
-      </div>
-      <div className="flex flex-col mt-2">
-        <label htmlFor="email" className="hidden">Widget</label>
-        <input type="email" name="email" id="email" placeholder="Email" className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+        <label
+          htmlFor="categories"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Select a category
+        </label>
+        <select
+          id="categories"
+          value={request.category}
+          onChange={handleChangeCategory}
+          className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
+        >
+          <option selected>Choose a category</option>
+          {requestData.map((elem, index) => (
+            <option key={index} value={elem.category}>
+              {elem.category}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="flex flex-col mt-2">
-        <label htmlFor="tel" className="hidden">Time trunc</label>
-        <input type="tel" name="tel" id="tel" placeholder="Telephone Number" className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <div className="flex flex-col mt-4">
+          <label
+            htmlFor="widgets"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select a widget
+          </label>
+          <select
+            id="widgets"
+            value={request.widget}
+            onChange={handleChangeWidget}
+            className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
+          >
+            <option selected>Choose a widget</option>
+            {widgets.map((elem, index) => (
+              <option key={index} value={elem}>
+                {elem}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col mt-4">
+          <label
+            htmlFor="timeTrunc"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select a time trunc
+          </label>
+          <select
+            id="timeTrunc"
+            value={request.timeTrunc}
+            onChange={handleTimeTrunc}
+            className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
+          >
+            <option selected>Choose a time trunc</option>
+            <option value="day">Day</option>
+            <option value="month">Month</option>
+          </select>
+        </div>
       </div>
 
-      <button type="submit" className="md:w-32 bg-blue-600  text-white dark:text-white font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80">Submit</button>
+      <div className="flex flex-col mt-4">
+        <label
+          htmlFor="range"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Select a range
+        </label>
+        <div className="flex flex-col sm:flex-row sm:items-center mt-1">
+          <div className="flex-1">
+            <Calendar setRequest={setRequest} request={request} dateType="startDate" />
+          </div>
+          <span className="mx-4 text-gray-500 my-2">to</span>
+          <div className="flex-1">
+            <Calendar setRequest={setRequest} request={request} dateType="endDate" />
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        onClick={handleRequest}
+        disabled={loading}
+        className={`${loading ? "cursor-not-allowed" : ""} md:w-40 bg-blue-600 text-white dark:text-white font-bold py-3 px-6 rounded-lg mt-6 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80`}
+      >
+        {loading ? <Spinner /> : null}
+        {loading ? "Loading..." : "Submit"}
+      </button>
+
+      <FilterEnergyBalance data={data} setFilteredData={setFilteredData} />
+
     </form>
   )
 }
 
-export default RequesForm;
+export default RequestForm
