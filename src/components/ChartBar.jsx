@@ -16,47 +16,68 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
+const ChartBar = ({ filteredData }) => {
 
-// Definimos los datos y opciones para el gráfico
-const chartData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-  datasets: [{
-    label: "Dataset #1",
-    backgroundColor: "rgba(255,99,132,0.2)",
-    borderColor: "rgba(255,99,132,1)",
-    borderWidth: 2,
-    hoverBackgroundColor: "rgba(255,99,132,0.4)",
-    hoverBorderColor: "rgba(255,99,132,1)",
-    data: [65, 59, 20, 81, 56, 55, 40],
-  }]
-};
+  const labels = filteredData?.data.map((elem) => elem.datetime.split("T")[0]);
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Value',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 2,
+        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+        hoverBorderColor: 'rgba(255,99,132,1)',
+        data: filteredData?.data.map((elem) => elem.value),
+      },
+      {
+        label: 'Percentage',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 2,
+        hoverBackgroundColor: 'rgba(54, 162, 235, 0.4)',
+        hoverBorderColor: 'rgba(54, 162, 235, 1)',
+        data:  filteredData?.data.map((elem) => elem.percentage),
+      },
+    ],
+  };
 
-const chartOptions = {
-  maintainAspectRatio: false,
-  scales: {
-    y: {
-      stacked: true,
-      grid: {
-        display: true,
-        color: "rgba(255,99,132,0.2)"
-      }
+  const options = {
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        stacked: true,
+        grid: {
+          display: true,
+          color: 'rgba(255,99,132,0.2)',
+        },
+      },
+      x: {
+        grid: {
+          display: true,
+        },
+      },
     },
-    x: {
-      grid: {
-        display: false
-      }
-    }
+    plugins: {
+      title: {
+        display: true,
+        text: filteredData?.title,
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+      },
+    },
   }
-};
 
-const ChartBar = () => {
   return (
-    <div style={{ width: '100%', height: '100%'  }}>
-      <Bar data={chartData} options={chartOptions} />
+    <div style={{ width: '100%', height: '100%' }}>
+      <Bar data={data} options={options} />
     </div>
-  )
-}
+  );
+};
 
 export default ChartBar;

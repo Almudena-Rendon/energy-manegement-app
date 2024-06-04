@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom"
-import SwitchTheme from "./SwitchTheme"
+import SwitchTheme from "../common/SwitchTheme"
 import { IconLeaf } from "../utils/Index"
 
 

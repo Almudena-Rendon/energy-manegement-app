@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Footer from '../components/Footer';
-import InfoCard from '../components/InfoCard';
+import InfoCard from '../common/InfoCard';
 import RequesForm from '../components/RequesForm';
 import TableData from '../components/TableData';
 import '../index.css';
 import ChartBar from '../components/ChartBar';
 import { PieChart } from '../components/PieChart';
+import LinearChart from '../components/LinearChart';
 
 const Dashboard = () => {
 
@@ -31,16 +32,31 @@ const Dashboard = () => {
         </div>
         <div className="mt-10 mx-4">
           <div className="grid grid-cols-3 gap-10">
-            <div className="col-span-2 bg-[#171e28] rounded-lg p-10 max-h-[450px]">
-              <ChartBar />
+            <div className="col-span-2 bg-gray-50 dark:bg-[#171e28] rounded-lg p-10 max-h-[450px]">
+              <ChartBar filteredData={filteredData} />
             </div>
-            <div className="bg-[#171e28] p-10 max-h-[450px] flex items-center justify-center">
+            <div className="bg-gray-50 dark:bg-[#171e28] p-10 max-h-[450px] flex items-center justify-center">
+              <PieChart filteredData={filteredData} />
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-10">
+            <div className="col-span-2 bg-gray-50 dark:bg-[#171e28] rounded-lg p-10 max-h-[450px]">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+              <TableData />
+            </div>
+            </div>
+            <div className="bg-gray-50 dark:bg-[#171e28] p-10 max-h-[450px] flex items-center justify-center">
+              <LinearChart  filteredData={filteredData} />
+            </div>
+          </div>
+          {/* <div className="grid grid-cols-3 gap-10 mt-4">
+            <div className=" bg-[#171e28] p-10 max-h-[450px] flex items-center justify-center">
               <PieChart />
             </div>
-          </div>
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
-            <TableData />
-          </div>
+            <div className="bg-[#171e28] col-span-2 p-7 relative overflow-x-auto shadow-md sm:rounded-lg flex items-center justify-center">
+              <TableData />
+            </div>
+          </div> */}
         </div>
           <Footer />
         </main>

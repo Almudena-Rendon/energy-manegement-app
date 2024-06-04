@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ToasterComponent from './components/Toaster'
+import ToasterComponent from './common/Toaster'
 import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
 import Hero from './pages/Hero'
