@@ -1,9 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 import Calendar from "../common/Calendar"
-import requestData from "../utils/data"
-import { Spinner } from "../utils/Index"
 import FilterEnergyBalance from "./FilterEnergyBalance"
+import Filter from "./Filter"
+import { requestData, switchCategory, switchWidget } from "../utils/data"
+import { Spinner } from "../utils/Index"
+import moment from "moment"
 
 const URL_base = "https://apidatos.ree.es/en/datos"
 
@@ -14,8 +16,8 @@ const RequestForm = ({ setFilteredData }) => {
   const [request, setRequest] = useState({
     category: requestData[0].category,
     widget: requestData[0].widgets,
-    startDate: "2024-02-01T00:00",
-    endDate: "2024-06-01T23:59",
+    startDate: moment().subtract(1, 'months').startOf("day").format("YYYY-MM-DD[T]HH:mm"),
+    endDate: moment().endOf("day").format("YYYY-MM-DD[T]HH:mm"),
     timeTrunc: "day",
   })
 
@@ -49,24 +51,27 @@ const RequestForm = ({ setFilteredData }) => {
     const arrayTemp = requestData.filter(
       (elem) => elem.category === e.target.value
     )[0].widgets
-    console.log(arrayTemp, "array")
     setWidgets(arrayTemp)
     setRequest({ ...request, category: e.target.value, widget: arrayTemp[0] })
     setData()
+    setFilteredData()
   }
 
   const handleChangeWidget = (e) => {
     setRequest({ ...request, widget: e.target.value })
     setData()
+    setFilteredData()
   }
 
   const handleTimeTrunc = (e) => {
     setRequest({ ...request, timeTrunc: e.target.value })
     setData()
+    setFilteredData()
   }
 
-  console.log(request)
   console.log(data, "data")
+  console.log(request, "request")
+
 
   return (
     <form className="flex flex-col justify-center">
@@ -86,7 +91,7 @@ const RequestForm = ({ setFilteredData }) => {
           <option selected>Choose a category</option>
           {requestData.map((elem, index) => (
             <option key={index} value={elem.category}>
-              {elem.category}
+              {switchCategory(elem.category)}
             </option>
           ))}
         </select>
@@ -109,7 +114,7 @@ const RequestForm = ({ setFilteredData }) => {
             <option selected>Choose a widget</option>
             {widgets.map((elem, index) => (
               <option key={index} value={elem}>
-                {elem}
+                {switchWidget(elem)}
               </option>
             ))}
           </select>
@@ -163,7 +168,8 @@ const RequestForm = ({ setFilteredData }) => {
         {loading ? "Loading..." : "Submit"}
       </button>
 
-      <FilterEnergyBalance data={data} setFilteredData={setFilteredData} />
+      {data && request.category === "balance" && <FilterEnergyBalance data={data} setFilteredData={setFilteredData} />}
+      {data && request.category !== "balance" && <Filter data={data} setFilteredData={setFilteredData} />}
 
     </form>
   )

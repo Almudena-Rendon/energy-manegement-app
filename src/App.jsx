@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ToasterComponent from './common/Toaster'
-import Navbar from './components/Navbar'
+import Navbar from './common/Navbar'
 import Dashboard from './pages/Dashboard'
-import Hero from './pages/Hero'
+import Hero from './pages/Landing'
 import 'flowbite'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <Router>
-        <main className="relative">
+        <main>
           <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />  
           <ToasterComponent />
           <Routes>

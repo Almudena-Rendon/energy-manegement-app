@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 const FilterEnergyBalance = ({ data, setFilteredData }) => {
 
-  const [powerType, setPowerType] = useState(data?.included[0].type)
-  const [powerSource, setPowerSource] = useState(data?.included[0].attributes.content[0].type)
-  const [powerSourceOptions, setPowerSourceOptions] = useState(data?.included[0].attributes.content)
+  const [powerType, setPowerType] = useState(data?.included[0]?.type)
+  const [powerSource, setPowerSource] = useState(data?.included[0]?.attributes.content[0].type)
+  const [powerSourceOptions, setPowerSourceOptions] = useState(data?.included[0]?.attributes.content)
 
   const handlePowerType = (e) => {
     setPowerType(e.target.value)

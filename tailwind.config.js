@@ -7,7 +7,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        zinc: "#101010",
+        dark: "#161617",
+        darkGray: "#1c1c1df7",
+      },
+    },
+  },
   plugins: [
     flowbitePlugin
   ]
