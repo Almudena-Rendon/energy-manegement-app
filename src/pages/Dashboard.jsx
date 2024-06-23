@@ -11,45 +11,44 @@ const Dashboard = () => {
 
   const [filteredData, setFilteredData] = useState(null)
 
-  console.log(filteredData, "filtered")
-
   return (
     <div className="flex relative bg-gray-100 dark:bg-zinc min-h-[calc(100vh-69px)]">
-      <div className="flex-grow flex-col overflow-y-auto mt-[30px]">
+      <div className="flex-grow flex-col overflow-y-auto mt-[10px]">
         <main className="p-6 sm:p-10 space-y-6">
-        <div className=" mx-4">
-          <h1 className="text-4xl font-semibold mb-2 dark:text-white">Welcome!</h1>
-          <h2 className="text-gray-600 ml-0.5 dark:text-gray-50">Make a request to visualize the data</h2>
-        </div>
-          <div className="mt-8 mx-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+          <div className=" mx-4">
+            <h1 className="text-4xl font-semibold mb-2 dark:text-white">Welcome!</h1>
+            <h2 className="text-gray-600 ml-0.5 dark:text-gray-50">Make a request to visualize the data</h2>
+          </div>
+          <div className="mt-8 mx-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-6">
+            <div className="mt-8 lg:mt-0 gap-7 order-2 lg:order-1 md:mb-10">
               <RequesForm setFilteredData={setFilteredData} />
-              <div className="mr-2 mt-8 sm:rounded-lg">    
-                <InfoCard />
-              </div>
             </div>
-        </div>
+            <div className="mr-2 mt-4 lg:mt-8 sm:rounded-lg order-1 lg:order-2">
+              <InfoCard />
+            </div>
+          </div>
         {filteredData && 
           <div className="mx-4">
-            <div className="grid grid-cols-3 gap-10">
-              <div className="col-span-2 bg-gray-50 dark:bg-[#171e28] p-7 max-h-[450px]">
+           <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
+              <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] px-3 py-2 md:p-7 md:max-h-[50vh] h-[50vh] flex items-center justify-center">
                 <ChartBar filteredData={filteredData} />
               </div>
-              <div className="bg-gray-50 dark:bg-[#171e28] p-7 max-h-[450px] flex items-center justify-center">
+              <div className="order-1 lg:order-2 bg-gray-50 h-[50vh] dark:bg-[#171e28] px-3 py-2 md:p-7  md:max-h-[50vh] flex items-center justify-center">
                 <PieChart filteredData={filteredData} />
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-10">
-                <div className="col-span-2 bg-gray-50 dark:bg-[#171e28] p-10 ">
-                  <div className="relative overflow-x-auto mt-10">
-                    <TableData filteredData={filteredData} />
-                  </div>
-                </div>
-                <div className="bg-gray-50 dark:bg-[#171e28] p-7 max-h-[475px] flex items-center justify-center">
-                  <LinearChart  filteredData={filteredData} />
+            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
+              <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] p-10 md:h-[55vh]">
+                <div className="relative overflow-x-auto mt-2 ">
+                  <TableData filteredData={filteredData} />
                 </div>
               </div>
-            </div>}
+              <div className="order-1 lg:order-2 bg-gray-50 dark:bg-[#171e28] p-8 md:h-[55vh] h-[50vh] flex items-center justify-center">
+                <LinearChart filteredData={filteredData} />
+              </div>
+            </div>
+        </div>
+        }
         </main>
       </div>
     </div>
