@@ -39,7 +39,7 @@ const Dashboard = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
               <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] p-8 rounded-lg">
-                <div className="relative overflow-x-auto mt-2 lg:mt-0 ">
+                <div className="relative mt-2 lg:mt-0 ">
                   <TableData filteredData={filteredData} />
                 </div>
               </div>

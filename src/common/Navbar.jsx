@@ -124,7 +124,7 @@ const Navbar = ({ isLogged, setIsLogged }) => {
             )}
           </div>
         </nav>
-        <div className={`navbar-menu h-full relative z-50  ${menuOpen ? "" : "hidden"}`}>
+        <div className={`navbar-menu h-[100vh] relative z-50  ${menuOpen ? "" : "hidden"}`}>
           <div className="navbar-backdrop fixed inset-0 bg-gray-600 opacity-25"></div>
           <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-zinc border-r border-gray-800 overflow-y-auto">
             <div className="flex items-center mb-8">

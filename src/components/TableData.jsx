@@ -34,7 +34,7 @@ const TableData = ({ filteredData }) => {
     const isNextDisabled = endRow >= filteredData?.data?.length
 
     return (
-        <div>
+        <>
             <div className="flex flex-col md:flex-row md:justify-end md:gap-3 lg:pb-4">
                 <PDFDownloadLink
                     document={<TableDataPDF data={filteredData?.data} />}
@@ -51,32 +51,34 @@ const TableData = ({ filteredData }) => {
                     Download CSV
                 </CSVLink>
             </div>
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 sm:mt-0">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        {columns.map((column) => (
-                            <th scope="col" key={column.key} className="px-6 py-3">
-                                {column.label}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody className='overflow-auto'>
-                    {paginatedData?.map((item, index) => (
-                        <tr key={index} className="odd:bg-white odd:dark:bg-[#171d27] even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {roundToFixed(item.value, 3)}
-                            </td>
-                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {roundToFixed(item.percentage, 3)}
-                            </td>
-                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {item.datetime.split("T")[0]}
-                            </td>
+            <div class="relative overflow-x-auto">
+                <table className="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 sm:mt-0  w-full">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            {columns.map((column) => (
+                                <th scope="col" key={column.key} className="px-6 py-3">
+                                    {column.label}
+                                </th>
+                            ))}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {paginatedData?.map((item, index) => (
+                            <tr key={index} className="odd:bg-white odd:dark:bg-[#171d27] even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {roundToFixed(item.value, 3)}
+                                </td>
+                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {roundToFixed(item.percentage, 3)}
+                                </td>
+                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {item.datetime.split("T")[0]}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             <div className="flex justify-between mt-3 sm:mt-4">
                 <button
                     onClick={handlePreviousPage}
@@ -93,7 +95,7 @@ const TableData = ({ filteredData }) => {
                     <ArrowRight />
                 </button>
             </div>
-        </div>
+        </>
     )
 }
 
