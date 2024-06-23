@@ -103,6 +103,12 @@ export const Mail = () => {
   )
 }
 
+export const CircleArrowRight = () => {
+  return (
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-right"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="m12 16 4-4-4-4"/></svg>
+  )
+}
+
 export const PrincingInfo = [
   { name: "Basic", info: "The basic plan is a good fit for smaller teams and startups.", price: " $19" },
   { name: "Plus", info: "The plus plan is a good fit for medium-size to larger companies.", price: "$39" },
@@ -115,13 +121,22 @@ export const FooterInfo = [
 ]
 
 export const InfoApp = [ 
-  {title: "The Energy App provides real-time data and analytics on various aspects such as energy generation, consumption trends, and market prices."},
-  {title: "It utilizes the REData API, a REST service that allows access to backend data used within the Energy App."},
-  {title: "Real-time monitoring of energy generation and consumption patterns."},
-  {title: "Historical data analysis for informed decision-making."},
-  {title: "Integration with market prices and grid infrastructure."},
-  {title: "Customizable widgets for specific data views (e.g., renewable energy evolution, electricity exchange)."},
-  {title: "User-friendly interface with interactive charts and summaries.."},
+  {title: "The Energy App provides real-time data and analytics connected to the REData API."},
+  {title: "The REData API provides a simple REST service to allow third parties to access its data."},
+  {title: "By using this API, you will be able to retrieve and use data from the REData widgets."},
+  {title: "Each widget is set up by a series of indicators which provide data related to a category."},
+  {title: "Please select a category, widget, time trunc and date range to make a request."},
+]
+
+export const roundToFixed = (num, decimals) => {
+  const factor = Math.pow(10, decimals)
+  return (Math.round(num * factor) / factor).toFixed(decimals)
+}
+
+export const Links = [
+  { title: "Home", href: "#home" },
+  { title: "About", href: "#about" },
+  { title: "Services", href: "#services" },
 ]
 
 export const animateWithGsap = (target, animationProps, scrollProps) => {
