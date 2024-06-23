@@ -59,7 +59,7 @@ const Login = ({ setIsLogged }) => {
             </h3>
           </div>
           <div className="p-4 md:p-5">
-            <form className="space-y-4 pb-4" onSubmit={handleLogin}>
+            <form className="space-y-4 pb-6" onSubmit={handleLogin}>
             <label htmlFor="password" className="block text-sm font-medium text-white">
                 Username
               </label>
@@ -73,7 +73,7 @@ const Login = ({ setIsLogged }) => {
                   id="username" 
                   value={username} 
                   onChange={(e) => setUsername(e.target.value)} 
-                  className="w-full border bg-darkGray border-gray-500 placeholder-gray-400 text-white px-3 py-3 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" 
+                  className="w-full rounded-lg border bg-darkGray border-gray-700 placeholder-gray-400 text-white px-3 py-3 text-sm tracking-wide pl-12" 
                   placeholder="Username" 
                   required 
                 />
@@ -93,7 +93,7 @@ const Login = ({ setIsLogged }) => {
                   id="password" 
                   value={password} 
                   onChange={(e) => setPassword(e.target.value)} 
-                  className="w-full border bg-darkGray border-gray-500 placeholder-gray-400 text-white px-3 py-3 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" 
+                  className="w-full rounded-lg border bg-darkGray border-gray-700 placeholder-gray-400 text-white px-3 py-3 text-sm tracking-wide focus:outline-none focus:shadow-outline pl-12" 
                   placeholder="••••••••" 
                   required 
                 />
@@ -102,7 +102,7 @@ const Login = ({ setIsLogged }) => {
                 <button 
                   disabled={loading} 
                   type="submit" 
-                  className="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-blue-500 text-gray-100 hover:bg-blue-600 hover:text-gray-200">
+                  className="transition-all duration-300 w-full border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-4 py-3 me-2 mt-4 bg-darkGray text-white  hover:bg-gray-700 hover:border-gray-700 focus:ring-gray-700 border-gray-700">
                   {loading ? <Spinner /> : null}
                   {loading ? "Loading..." : "Login to your account"}
                 </button>
