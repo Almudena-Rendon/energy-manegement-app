@@ -2,6 +2,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 import { useState } from 'react'
 import { CSVLink } from 'react-csv'
 import TableDataPDF from './TableDataPDF'
+import { ArrowLeft, ArrowRight, roundToFixed } from '../utils/Index'
 
 const TableData = ({ filteredData }) => {
     const columns = [
@@ -29,28 +30,28 @@ const TableData = ({ filteredData }) => {
     const endRow = startRow + rowsPerPage
     const paginatedData = filteredData && filteredData?.data?.slice(startRow, endRow)
     const csvHeaders = columns.map(column => ({ label: column.label, key: column.key }))
+    const isPreviousDisabled = currentPage === 0
+    const isNextDisabled = endRow >= filteredData?.data?.length
 
     return (
         <div>
-            <div className="flex justify-end mb-2 gap-3">
+            <div className="flex flex-col md:flex-row md:justify-end md:gap-3 lg:pb-4">
                 <PDFDownloadLink
                     document={<TableDataPDF data={filteredData?.data} />}
                     fileName="table.pdf"
                 >
-                    <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded">
-                        Download PDF
-                    </button>
+                    <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 w-full"> Download PDF</button>
                 </PDFDownloadLink>
                 <CSVLink
                     data={filteredData?.data}
                     headers={csvHeaders}
                     filename="table.csv"
-                    className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded"
+                    className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 w-full text-center mt-4 sm:mt-0 sm:w-auto"
                 >
                     Download CSV
                 </CSVLink>
             </div>
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4 sm:mt-0 overflow-auto">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         {columns.map((column) => (
@@ -64,10 +65,10 @@ const TableData = ({ filteredData }) => {
                     {paginatedData?.map((item, index) => (
                         <tr key={index} className="odd:bg-white odd:dark:bg-[#171d27] even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {item.value.toFixed(4)}
+                                {roundToFixed(item.value, 3)}
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {item.percentage.toFixed(4)}
+                                {roundToFixed(item.percentage, 3)}
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {item.datetime.split("T")[0]}
@@ -76,20 +77,20 @@ const TableData = ({ filteredData }) => {
                     ))}
                 </tbody>
             </table>
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-3 sm:mt-4">
                 <button
                     onClick={handlePreviousPage}
-                    className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded"
-                    disabled={currentPage === 0}
+                    className={`${isPreviousDisabled ? "cursor-not-allowed opacity-2 dark:bg-gray-700 bg-gray-100" : "bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:border-gray-600"} text-gray-900  border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2  dark:text-white dark:border-gray-600  dark:focus:ring-gray-700`}
+                    disabled={isPreviousDisabled}
                 >
-                    Previous
+                    <ArrowLeft />
                 </button>
                 <button
                     onClick={handleNextPage}
-                    className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded"
+                    className={`${isNextDisabled ? "cursor-not-allowed opacity-2 dark:bg-gray-700 bg-gray-100": "bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:border-gray-600"} text-gray-900  border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2  dark:text-white dark:border-gray-600  dark:focus:ring-gray-700`}
                     disabled={endRow >= filteredData?.data?.length}
                 >
-                    Next
+                    <ArrowRight />
                 </button>
             </div>
         </div>

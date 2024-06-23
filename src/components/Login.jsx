@@ -31,7 +31,6 @@ const Login = ({ setIsLogged }) => {
       }
 
       const json = await response.json()
-      console.log("hola", json)
       toast.success(`You've logged in successfully!`)
       localStorage.setItem('token', json.token)
       navigate('/dashboard')

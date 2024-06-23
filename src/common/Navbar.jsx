@@ -3,42 +3,42 @@ import { IconLeaf, Links } from "../utils/Index";
 import SwitchTheme from "./SwitchTheme";
 import { useState, useEffect } from "react";
 
-const useIntersectionObserver = (setActiveSection, thresholdValue, rootMarginValue) => {
+const useIntersectionObserver = (setActiveSection, thresholdValue, rootMarginValue, dependencies) => {
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const options = {
       root: null,
       rootMargin: rootMarginValue,
       threshold: thresholdValue,
-    }
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
-      })
-    }, options)
+      });
+    }, options);
 
     sections.forEach((section) => {
       observer.observe(section);
-    })
+    });
 
     return () => {
       sections.forEach((section) => {
         observer.unobserve(section);
-      })
-    }
-  }, [setActiveSection, thresholdValue, rootMarginValue])
-}
+      });
+    };
+  }, [setActiveSection, thresholdValue, rootMarginValue, ...dependencies]);
+};
 
 const Navbar = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
-  const homePage = window.location.pathname === "/"
+  const homePage = window.location.pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  useIntersectionObserver(setActiveSection, 0.1, "0px 0px -50% 0px");
+  useIntersectionObserver(setActiveSection, 0.1, "0px 0px -50% 0px", [isLogged]);
 
   const handleLogOut = () => {
     if (isLogged) {
@@ -150,21 +150,21 @@ const Navbar = ({ isLogged, setIsLogged }) => {
             </div>
             <div>
               <ul>
-                  {Links.map((link, index) => (
-                    <li key={index} className="mb-1" onClick={toggleMenu}>
-                      <a
-                        className={`block p-4 text-sm font-semibold ${
-                          activeSection === link.href.slice(1)
-                            ? "text-blue-600 bg-gray-800 rounded"
-                            : "text-gray-400"
-                        } hover:bg-gray-800 hover:text-blue-600 rounded`}
-                        href={link.href}
-                      >
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {Links.map((link, index) => (
+                  <li key={index} className="mb-1" onClick={toggleMenu}>
+                    <a
+                      className={`block p-4 text-sm font-semibold ${
+                        activeSection === link.href.slice(1)
+                          ? "text-blue-500"
+                          : "text-gray-400"
+                      } hover:bg-gray-800 hover:text-blue-600 rounded`}
+                      href={link.href}
+                    >
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="mt-auto">
               <div className="pt-6">

@@ -69,10 +69,6 @@ const RequestForm = ({ setFilteredData }) => {
     setFilteredData()
   }
 
-  console.log(data, "data")
-  console.log(request, "request")
-
-
   return (
     <form className="flex flex-col justify-center">
       <div className="flex flex-col">

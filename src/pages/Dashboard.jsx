@@ -28,22 +28,22 @@ const Dashboard = () => {
             </div>
           </div>
         {filteredData && 
-          <div className="mx-4">
+          <div className="mx-4 dark:bg-[#171e28] bg-gray-50 rounded-xl">
            <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
-              <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] px-3 py-2 md:p-7 md:max-h-[50vh] h-[50vh] flex items-center justify-center">
+              <div className="order-2 lg:order-1 col-span-2 dark:bg-[#171e28] bg-gray-50 p-8 md:p-7 h-[50vh] flex items-center justify-center rounded-lg">
                 <ChartBar filteredData={filteredData} />
               </div>
-              <div className="order-1 lg:order-2 bg-gray-50 h-[50vh] dark:bg-[#171e28] px-3 py-2 md:p-7  md:max-h-[50vh] flex items-center justify-center">
+              <div className="order-1 lg:order-2 bg-gray-50 h-[50vh] dark:bg-[#171e28] p-4 md:p-7  flex items-center justify-center rounded-lg">
                 <PieChart filteredData={filteredData} />
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
-              <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] p-10 md:h-[55vh]">
-                <div className="relative overflow-x-auto mt-2 ">
+              <div className="order-2 lg:order-1 col-span-2 bg-gray-50 dark:bg-[#171e28] p-8 rounded-lg">
+                <div className="relative overflow-x-auto mt-2 lg:mt-0 ">
                   <TableData filteredData={filteredData} />
                 </div>
               </div>
-              <div className="order-1 lg:order-2 bg-gray-50 dark:bg-[#171e28] p-8 md:h-[55vh] h-[50vh] flex items-center justify-center">
+              <div className="order-1 lg:order-2 bg-gray-50 dark:bg-[#171e28] rounded-lg p-8 md:min-h-[55vh] h-[50vh] flex items-center justify-center">
                 <LinearChart filteredData={filteredData} />
               </div>
             </div>

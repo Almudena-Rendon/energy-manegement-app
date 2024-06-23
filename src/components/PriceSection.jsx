@@ -19,7 +19,7 @@ const PriceSection = () => {
   }, [])
 
   return (
-    <div className="box-border max-w-6xl px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
+    <div className="box-border max-w-6xl px-4 py-14 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
       <div className="flex flex-col items-center leading-7 text-center text-gray-900">
         <h2
           id="hero"
