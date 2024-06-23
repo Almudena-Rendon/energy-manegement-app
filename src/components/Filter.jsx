@@ -29,7 +29,7 @@ const Filter = ({ data, setFilteredData }) => {
             onChange={(e)=> setSubcategory(e.target.value)}
             className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
           >
-            <option selected>Choose a subcategory</option>
+            <option disabled selected>Choose a subcategory</option>
               {data?.included?.map((elem) => (
                   <option key={elem.id} value={elem.type}>
                     {elem.type}
@@ -39,7 +39,7 @@ const Filter = ({ data, setFilteredData }) => {
         </div>
         <button
             onClick={onSubmit}
-            className={`mt-5 md:w-40 bg-blue-600 text-white dark:text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80`}
+            className={`md:w-40 text-gray-900 bg-white border focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 mt-10 md:mt-6 dark:bg-gray-800 dark:text-white  dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 border-gray-400 dark:border-gray-700 w-full`}
           >
             Filter data
           </button>
