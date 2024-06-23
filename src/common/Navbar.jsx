@@ -1,56 +1,56 @@
-import { useNavigate } from "react-router-dom";
-import { IconLeaf, Links } from "../utils/Index";
-import SwitchTheme from "./SwitchTheme";
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { IconLeaf, Links } from "../utils/Index"
+import SwitchTheme from "./SwitchTheme"
+import { useState, useEffect } from "react"
 
 const useIntersectionObserver = (setActiveSection, thresholdValue, rootMarginValue, dependencies) => {
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section")
     const options = {
       root: null,
       rootMargin: rootMarginValue,
       threshold: thresholdValue,
-    };
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          setActiveSection(entry.target.id)
         }
-      });
-    }, options);
+      })
+    }, options)
 
     sections.forEach((section) => {
-      observer.observe(section);
-    });
+      observer.observe(section)
+    })
 
     return () => {
       sections.forEach((section) => {
-        observer.unobserve(section);
-      });
-    };
-  }, [setActiveSection, thresholdValue, rootMarginValue, ...dependencies]);
-};
+        observer.unobserve(section)
+      })
+    }
+  }, [setActiveSection, thresholdValue, rootMarginValue, ...dependencies])
+}
 
 const Navbar = ({ isLogged, setIsLogged }) => {
-  const navigate = useNavigate();
-  const homePage = window.location.pathname === "/";
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const navigate = useNavigate()
+  const homePage = window.location.pathname === "/"
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
 
-  useIntersectionObserver(setActiveSection, 0.1, "0px 0px -50% 0px", [isLogged]);
+  useIntersectionObserver(setActiveSection, 0.1, "0px 0px -50% 0px", [isLogged])
 
   const handleLogOut = () => {
     if (isLogged) {
-      localStorage.removeItem("token");
-      setIsLogged(false);
-      navigate("/");
+      localStorage.removeItem("token")
+      setIsLogged(false)
+      navigate("/")
     }
-  };
+  }
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+    setMenuOpen(!menuOpen)
+  }
 
   return (
     <>
@@ -79,7 +79,7 @@ const Navbar = ({ isLogged, setIsLogged }) => {
                   <a
                     className={`text-sm px-2 ${
                       activeSection === link.href.slice(1)
-                        ? "text-blue-500"
+                        ? "text-blue-600"
                         : "text-gray-400"
                     } hover:text-gray-500`}
                     href={link.href}
@@ -124,9 +124,9 @@ const Navbar = ({ isLogged, setIsLogged }) => {
             )}
           </div>
         </nav>
-        <div className={`navbar-menu h-[100vh] relative z-50  ${menuOpen ? "" : "hidden"}`}>
+        <div className={`navbar-menu relative z-50  ${menuOpen ? "" : "hidden"}`}>
           <div className="navbar-backdrop fixed inset-0 bg-gray-600 opacity-25"></div>
-          <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-zinc border-r border-gray-800 overflow-y-auto">
+          <nav className="h-[100vh] fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-zinc border-r border-gray-800 overflow-y-auto">
             <div className="flex items-center mb-8">
               <a className="mr-auto text-3xl font-bold leading-none" href="#">
                 <IconLeaf />
@@ -155,7 +155,7 @@ const Navbar = ({ isLogged, setIsLogged }) => {
                     <a
                       className={`block p-4 text-sm font-semibold ${
                         activeSection === link.href.slice(1)
-                          ? "text-blue-500 bg-gray-800 rounded"
+                          ? "text-blue-600 bg-gray-800 rounded"
                           : "text-gray-400"
                       } hover:bg-gray-800 hover:text-blue-600 rounded`}
                       href={link.href}
@@ -184,7 +184,7 @@ const Navbar = ({ isLogged, setIsLogged }) => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
