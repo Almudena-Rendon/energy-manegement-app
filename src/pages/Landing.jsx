@@ -29,7 +29,6 @@ const Hero = ({ setIsLogged }) => {
         <PriceSection />
       </section>
       <section 
-        id="contact" 
         className="bg-zinc"
       >
         <Footer /> 
