@@ -3,7 +3,7 @@ import { FooterInfo } from "../utils/Index";
 const Footer = () => {
 
   return (
-    <footer className="max-w-screen-xl px-4 py-16 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 bg-zinc">
+    <footer className="max-w-screen-xl px-4 py-20 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 bg-zinc">
       <nav className="flex flex-wrap justify-center -mx-5 -my-2">
         {FooterInfo.map((item) => (
           <div key={item.socialMedia} className="px-5 py-2">
