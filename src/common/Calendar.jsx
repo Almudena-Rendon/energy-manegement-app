@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { ArrowLeft, ArrowRight } from "../utils/Index";
+import moment from 'moment'
 import Datepicker from "tailwind-datepicker-react"
-import moment from 'moment';
+import { ArrowLeft, ArrowRight } from "../utils/Index"
 
 const Calendar = ({ request, setRequest, dateType }) => {
 
@@ -20,7 +20,7 @@ const Calendar = ({ request, setRequest, dateType }) => {
 			icons: "",
 			text: "",
 			disabledText: "bg-gray-50 dark:bg-gray-700",
-			input: "rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none ",
+			input: "rounded-lg bg-gray-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none ",
 			inputIcon: "",
 			selected: "",
 		},
