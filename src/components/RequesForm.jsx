@@ -88,7 +88,7 @@ const RequestForm = ({ setFilteredData }) => {
           onChange={handleChangeCategory}
           className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
         >
-          <option selected>Choose a category</option>
+          <option disabled selected>Choose a category</option>
           {requestData.map((elem, index) => (
             <option key={index} value={elem.category}>
               {switchCategory(elem.category)}
@@ -97,7 +97,7 @@ const RequestForm = ({ setFilteredData }) => {
         </select>
       </div>
 
-      <div className="grid md:grid-cols-2 md:gap-6">
+      <div className="md:grid md:grid-cols-2 md:gap-6">
         <div className="flex flex-col mt-4">
           <label
             htmlFor="widgets"
@@ -109,9 +109,9 @@ const RequestForm = ({ setFilteredData }) => {
             id="widgets"
             value={request.widget}
             onChange={handleChangeWidget}
-            className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
+            className="w-auto mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
           >
-            <option selected>Choose a widget</option>
+            <option disabled selected>Choose a widget</option>
             {widgets.map((elem, index) => (
               <option key={index} value={elem}>
                 {switchWidget(elem)}
@@ -133,7 +133,7 @@ const RequestForm = ({ setFilteredData }) => {
             onChange={handleTimeTrunc}
             className="w-100 mt-1 py-2 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none"
           >
-            <option selected>Choose a time trunc</option>
+            <option disabled selected>Choose a time trunc</option>
             <option value="day">Day</option>
             <option value="month">Month</option>
           </select>
@@ -162,7 +162,7 @@ const RequestForm = ({ setFilteredData }) => {
         type="submit"
         onClick={handleRequest}
         disabled={loading}
-        className={`${loading ? "cursor-not-allowed" : ""} md:w-40 bg-blue-600 text-white dark:text-white font-bold py-3 px-6 rounded-lg mt-6 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80`}
+        className={`${loading ? "cursor-not-allowed" : ""} md:w-40 text-gray-900 bg-white border focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 mt-10 md:mt-6 dark:bg-gray-800 dark:text-white  dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 border-gray-400 dark:border-gray-700`}
       >
         {loading ? <Spinner /> : null}
         {loading ? "Loading..." : "Submit"}
