@@ -57,9 +57,9 @@ const Navbar = ({ isLogged, setIsLogged }) => {
       <header
         className={`${
           isLogged && !homePage
-            ? "bg-gray-50 dark:bg-[#161617] border-gray-300 dark:border-gray-600"
+            ? "bg-gray-50 dark:bg-[#161617] border-b border-gray-300 dark:border-gray-600"
             : "bg-zinc border-gray-900"
-        } sticky w-full z-20 top-0 start-0 border-b `}
+        } sticky w-full z-20 top-0 start-0`}
       >
         <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
