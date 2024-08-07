@@ -42,3 +42,6 @@ https://energy-manegement-app.vercel.app/
 4. Run the development server
 
    npm run dev
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
