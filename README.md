@@ -1,7 +1,5 @@
-<div style="display: flex; justify-content: center">
-  <img src="https://github.com/user-attachments/assets/70dada90-f743-4962-a9de-4038522c618f" alt="Image 1" width="400"/>
-  <img src="https://github.com/user-attachments/assets/fdbe3df4-044b-4308-b49f-d4ce6e19f7cc" alt="Image 2" width="400"/>
-</div>
+
+![Diseño sin título (2)](https://github.com/user-attachments/assets/4e702d70-4df8-45df-9a2d-b250159baae4)
 
 # Energy App
 
