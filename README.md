@@ -1,7 +1,8 @@
-<div>
-  <img src="https://github.com/Almudena-Rendon/energy-manegement-app/assets/126793941/a9d22b40-a026-4514-b677-8356f362b68a" alt="Image 1" width="600"/>
-  <img src="https://github.com/Almudena-Rendon/energy-manegement-app/assets/126793941/899ae5a6-bf8b-4a48-afdd-0b65632efb58" alt="Image 2" width="200"/>
+<div style="display: flex; justify-content: center">
+  <img src="[https://github.com/user-attachments/assets/4a74b133-e27f-4b12-ae1f-2b7ed645c5c3](https://github.com/user-attachments/assets/78c62751-5135-4999-85d9-90590cb7dc4d)" alt="Image 1" width="400"/>
+  <img src="[https://github.com/user-attachments/assets/679946eb-9105-4305-8462-5fd37c6f0fd3](https://github.com/user-attachments/assets/20a01419-319b-46d5-966e-5a307d585b10)" alt="Image 2" width="400"/>
 </div>
+
 
 # Energy App
 
